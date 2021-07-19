@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h1>Author : {{ author.first_name }},{{ author.last_name }}</h1>
+        <p>{{ author.date_of_birth }} - {{ author.date_of_died }}</p>
+    <h3>Books:</h3>
+        <ul>
+
+            {% for x in book.all %}
+                {% if author.id == x.id %}
+                <li><a href ="{{ x.get_absolute_url }}">{{x.title}}</a></li>
+                    <p>{{ x.summary|slice:":200" }}</p>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}
